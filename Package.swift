@@ -49,9 +49,9 @@ let package = Package(
                 .define("GGML_USE_METAL"),
                 .define("GGML_METAL_NDEBUG", .when(configuration: .release)),
                 .define("NDEBUG", .when(configuration: .release)),
-                .unsafeFlags(["-Ofast"], .when(configuration: .release)), 
+                .unsafeFlags(["-Ofast"], .when(configuration: .release)),
                 .unsafeFlags(["-O3"], .when(configuration: .debug)),
-                .unsafeFlags(["-mfma","-mfma","-mavx","-mavx2","-mf16c","-msse3","-mssse3"]), //for Intel CPU
+                // Intel-only SIMD flags removed — unsupported on arm64-apple-ios
                 .unsafeFlags(["-pthread"]),
                 .unsafeFlags(["-fno-objc-arc"]),
                 .unsafeFlags(["-Wno-shorten-64-to-32"]),
