@@ -53,9 +53,9 @@ public class LLMBase {
     public var outputRepeatTokens: [ModelToken] = []
     
     // Used to keep old context until it needs to be rotated or purge out for new tokens
-    var past: [[ModelToken]] = [] // Will house both queries and responses in order
+    public var past: [[ModelToken]] = [] // Will house both queries and responses in order
     //var n_history: Int32 = 0
-    var nPast: Int32 = 0
+    public var nPast: Int32 = 0
     
     
     
