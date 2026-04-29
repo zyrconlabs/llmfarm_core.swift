@@ -5445,6 +5445,16 @@ static bool llm_load_tensors(
                         }
                     }
 
+                    // Optional rope_freqs tensor — present in some Llama 3.x quantizations
+                    {
+                        struct ggml_tensor * t = ml.create_tensor(
+                            ctx_input, tn(LLM_TENSOR_ROPE_FREQS, "weight"),
+                            {(int64_t)(hparams.n_rot / 2)},
+                            llama_model_loader::TENSOR_NOT_REQUIRED
+                        );
+                        (void)t;
+                    }
+
                     for (int i = 0; i < n_layer; ++i) {
                         ggml_context * ctx_layer = ctx_for_layer(i);
                         ggml_context * ctx_split = ctx_for_layer_split(i);
